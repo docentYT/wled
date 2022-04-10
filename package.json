@@ -1,7 +1,10 @@
 {
   "name": "wled",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "npm package for controlling wled lights easily.",
+  "homepage": "https://github.com/docentYT/wled#readme",
+  "url" : "https://github.com/docentYT/wled/issues",
+
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
