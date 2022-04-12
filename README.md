@@ -2,6 +2,8 @@
  npm package for controlling wled lights easily.
 
 ```ts
+const { WLED, Preset } = require("wled");
+
 // New WLED instance
 const myLamp = new WLED("ip_adress");
 
@@ -92,8 +94,11 @@ myLamp.setLedColor([2,5,[255,0,0]]) // Leds between 2 and 5 to red
 // Starts new playlist
 myLamp.setPlaylist(presetsIds, durations, transistionTimes, repeat, end );
 
-// Set saved preset to current state
+// Set saved Preset to current state
 myLamp.setPreset(myPreset);
+
+// Create new Preset from current state
+myLamp.createPreset().then(data => { console.log(data) });
 
 // Set effect
 myLamp.setEffect(id);
@@ -109,8 +114,8 @@ myLamp.setEffectIntensity(128);
 
 // Set palette
 myLamp.setPalette(id);
-myLamp.setPalette(~); // Effect 1 up
-myLamp.setPalette(~-); // Effect 1 down
+myLamp.setPalette(~); // Palette 1 up
+myLamp.setPalette(~-); // Palette 1 down
 myLamp.setPalette("r"); // Random palette
 
 // Custom api calls

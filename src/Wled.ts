@@ -218,25 +218,29 @@ export class WLED {
         await axios.post(this.api, {
             "on": preset.on,
             "bri": preset.bri,
-            "transistion": preset.transistion,
+            "transistion": preset.transition,
             "mainseg": preset.mainseg,
             "seg": preset.seg
         });
+    };
+
+    async createPreset() {
+        return this.getState().then(data => new Preset(data) );
     };
     
     async setEffect(id: string | number) {
         if (typeof(id) == "string") {
             if (id == "~" || id == "~-" || id == "r") await axios.post(this.api, { "seg": [{"fx":id}] } );
         } else await axios.post(this.api, { "seg": [{"fx":id}] } );
-    }
+    };
 
     async setEffectSpeed(speed: number) {
         if (this.checkValue("Effect speed", speed)) await axios.post(this.api, { "seg": [{"sx":speed}] } );
-    }
+    };
 
     async setEffectIntensity(intensity: number) {
         if (this.checkValue("Effect intensity", intensity)) await axios.post(this.api, { "seg": [{"ix":intensity}] } );
-    }
+    };
 
     async setPalette(id: string | number) {
         if (typeof(id) == "string") {
